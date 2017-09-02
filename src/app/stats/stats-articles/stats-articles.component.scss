@@ -1,0 +1,38 @@
+@import "../../../variables";
+
+.sm-stats-articles { font-family: sans-serif;
+  .table { overflow: hidden;
+    background: none;
+    border: $borderComponent;
+    border-top: 0;
+    border-radius: $borderRadius;
+    border-collapse: initial;
+
+    .head-title { font-weight: 500; margin: 9px 0 5px 0; padding-left: 22px; }
+    .head-title, span { display: inline-block; }
+    .news {
+      float: right;
+      margin: 5px 25px 5px 0;
+      border: 1px solid white;
+      padding: 2px 22px;
+    }
+    thead {
+      background: $colorOdd;
+      color: white;
+      border-left: 1px solid $colorOdd;
+      border-right: 1px solid $colorOdd;
+    }
+    tbody {
+      tr {
+        &:hover {
+          cursor: pointer;
+        }
+        td {
+          &:first-child {
+            padding-left: 30px;
+          }
+        }
+      }
+    }
+  }
+}

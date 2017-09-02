@@ -1,0 +1,62 @@
+// 3rd party paths
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+$fa-font-path : "../../node_modules/font-awesome/fonts";
+
+// colors
+$colorBgPage: #ffffff;
+
+$colorText: #000000;
+$colorLightText: #ffffff;
+$colorTextHighlighted: #ffffff;
+
+$colorTextAdditionalInfo: grey;
+$colorTextAdditionalInfoHighlighted: #ffffff;
+
+$colorBgSelectedListItem: #025aa5;
+$colorSelectedListItem: $colorTextHighlighted;
+
+$colorBgHoverListItem: #ccd7f6;
+$colorHoverListItem: $colorText;
+
+$colorBgZebraListItem: #F7F7F7;
+$colorZebraListItem: $colorText;
+
+$colorBgWin: green;
+$colorWin: green;
+
+$colorBgDraw: orange;
+$colorDraw: orange;
+
+$colorBgLoss: #c9302c;
+$colorLoss: #c9302c;
+
+$colorBgNotPlayed: gray;
+$colorNotPlayed: gray;
+
+$colorOdd: #025aa5;
+$colorBgSelectedOdd: #025aa5;
+$colorBorderOdd: #025aa5;
+
+// none
+$none: 0;
+
+// elements
+$navHeight: 56px;
+$footerHeight: 40px;
+
+// margins, paddigns
+$margin: 20px;
+$margin-l: 25px;
+$margin-s: 10px;
+$margin-xs: 5px;
+
+$padding: 20px;
+$padding-l: 25px;
+$padding-s: 10px;
+$padding-xs: 5px;
+
+$scrollbarPadding: 6px;
+
+// borders
+$borderComponent: 1px solid #ccc;
+$borderRadius: 5px;

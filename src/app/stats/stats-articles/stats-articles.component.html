@@ -1,0 +1,21 @@
+<div class="sm-stats-articles">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="2">
+          <!--<h4 class="text-uppercase">News:</h4>-->
+          <h4 class="head-title">{{category}}</h4>
+          <span class="news">NEWS</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles" (click)="redirect(article)"> <!-- TODO really need? -->
+        <td class="col-md-2" style="width: 12.499999995%">{{article.date}}</td>
+        <td class="col-md-10">{{article.title}}
+          <span> | <a href="http://{{article.url}}" target="_blank">{{article.source}}</a></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
