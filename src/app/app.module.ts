@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { StatsArticlesComponent } from "./stats/stats-articles/stats-articles.component";
+import { VoteListComponent } from "./vote/vote-list/vote-list.component";
+import { VoteItemComponent } from "./vote/vote-item/vote-item.component";
 
 const appRoutes: Routes = [
   {
     path: 'stats-articles',
-    component: StatsArticlesComponent,
+    component: StatsArticlesComponent
+  },
+  {
+    path: 'votes',
+    component: VoteListComponent
   },
   { path: '',
     redirectTo: 'stats-articles',
@@ -18,7 +24,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StatsArticlesComponent
+    StatsArticlesComponent,
+    VoteListComponent,
+    VoteItemComponent
   ],
   imports: [
     BrowserModule,//
