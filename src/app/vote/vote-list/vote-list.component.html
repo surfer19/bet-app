@@ -1,8 +1,6 @@
-<div>
-  list
-  <ul>
-    <li *ngFor="let vote of voteList">
-      <vote-item [voteItem]="vote"></vote-item>
-    </li>
-  </ul>
+
+<div class="vote" *ngFor="let voteItem of voteList">
+    <vote-item [voteItem]="voteItem"></vote-item>
 </div>
+
+

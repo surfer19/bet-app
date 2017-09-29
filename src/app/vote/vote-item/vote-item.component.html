@@ -1,10 +1,31 @@
-<ul style="margin-top: 50px;">
-  <li>{{voteItem.title}}</li>
-  <li>{{voteItem.description}}</li>
-  <li>{{voteItem.points}}</li>
-  <li>
-    <button (click)="pressLike()">Like</button>
-    <button (click)="pressDislike()">Dislike</button>
-  </li>
-</ul>
+<div class="vote__item">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="like-box">
+        <h1 class="like-box__number">
+          {{voteItem.points}}
+        </h1>
+        <div class="like-box__icons">
+          <span (click)="pressLike()">
+            <i class="like-box__icons--default like-box__icons--like fa fa-2x fa-thumbs-o-up fa-border"
+               [ngClass]="{'like-box__icons--active-green': isActiveLike, 'like-box__icons--inactive': isInactiveLike}"></i>
+          </span>
+          <span (click)="pressDislike()">
+            <i class="like-box__icons--default like-box__icons--dislike fa fa-2x fa-thumbs-o-down fa-border"
+               [ngClass]="{'like-box__icons--active-red': isActiveDislike, 'like-box__icons--inactive': isInactiveDislike}">
+            </i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 text-box">
+      <h4 class="text-box__header">
+        {{voteItem.title}}
+      </h4>
+      <p class="text-box__text">
+        {{voteItem.description}}
+      </p>
+    </div>
+  </div>
+</div>
 

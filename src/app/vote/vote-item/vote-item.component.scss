@@ -1,0 +1,89 @@
+@import "../../../variables";
+
+$colorIcoGreen: #56B657;
+$colorIcoRed: #c9302c;
+$colorIcoRedBg: #FFCBCA;
+$colorIcoGreenBg: #A7FFA8;
+$opacityIcoDisabled: 0.25;
+
+// todo move to global file
+@function safe-rgba($color, $alpha: 1.0) {
+  @return unquote("rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$alpha})");
+}
+
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms ;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+/*
+ * Apply a CSS3 transition-duration
+ * @include transitionDuration(1s);
+ */
+@mixin transitionDuration($duration) {
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+  -ms-transition-duration: $duration;
+  transition-duration: $duration;
+}
+@mixin transitionProperty($property) {
+  -webkit-transition-property: $property;
+  -moz-transition-property: $property;
+  -o-transition-property: $property;
+  -ms-transition-property: $property;
+  transition-property: $property;
+}
+
+.vote__item {
+  padding: 30px 20px 25px;
+  border: 1px solid safe-rgba($colorBorderOdd, 0.21);
+  margin-top: $margin;
+  border-radius: $borderRadius;
+}
+
+.like-box { text-align: center; border: 1px solid $colorBorderOdd; border-radius: $borderRadius;
+  &__number { color: $colorBorderOdd; padding: 0; font-size: 50px; font-weight: lighter; }
+  &__icons { margin: 20px 0 10px;
+    &--default {
+      border-radius: $borderRadius;
+      border-width: 1px;
+      cursor: pointer;
+      @include transitionDuration(0.4s);
+      @include transitionProperty(transform);
+      &:not(.like-box__icons--active-green):not(.like-box__icons--active-red):hover {
+        @include scale(1.1);
+      }
+    }
+    &--like { color: $colorIcoGreen; border-color: $colorIcoGreen; margin-right: $margin-xs; }
+    &--dislike { color: $colorIcoRed; border-color: $colorIcoRed; margin-left: $margin-xs; }
+    &--active-red { background: $colorIcoRedBg;
+      &:hover { cursor: not-allowed; }
+    }
+    &--active-green { background: $colorIcoGreenBg;
+      &:hover { cursor: not-allowed; }
+    }
+    &--inactive { opacity: $opacityIcoDisabled;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.text-box {
+  &__header { margin: 0; }
+  &__text {
+    margin-top: 15px;
+    text-align: justify;
+  }
+}

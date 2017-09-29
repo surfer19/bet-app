@@ -20,8 +20,10 @@ export class VoteListComponent implements OnInit {
   getVoteItems() {
     // get all mock votes to our array
     this.voteListService.getVotes().then((votes) => {
-      this.voteList = votes;
-      // console.log("votelist = ", this.voteList);
+      this.voteList = this.sortItems(votes);
     });
+  }
+  sortItems(listOfItems): VoteItem[]{
+    return listOfItems.sort((a,b) => b.points - a.points);
   }
 }
