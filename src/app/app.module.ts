@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { StatsArticlesComponent } from "./stats/stats-articles/stats-articles.component";
 import { VoteListComponent } from "./vote/vote-list/vote-list.component";
 import { VoteItemComponent } from "./vote/vote-item/vote-item.component";
+import { TestGroupsComponent } from './groups/test-groups/test-groups.component';
 
 const appRoutes: Routes = [
   {
@@ -14,6 +15,10 @@ const appRoutes: Routes = [
   {
     path: 'votes',
     component: VoteListComponent
+  },
+  {
+    path: 'groups',
+    component: TestGroupsComponent
   },
   { path: '',
     redirectTo: 'stats-articles',
@@ -26,7 +31,8 @@ const appRoutes: Routes = [
     AppComponent,
     StatsArticlesComponent,
     VoteListComponent,
-    VoteItemComponent
+    VoteItemComponent,
+    TestGroupsComponent
   ],
   imports: [
     BrowserModule,//
