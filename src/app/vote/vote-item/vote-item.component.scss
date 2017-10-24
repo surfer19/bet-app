@@ -5,6 +5,7 @@ $colorIcoRed: #c9302c;
 $colorIcoRedBg: #FFCBCA;
 $colorIcoGreenBg: #A7FFA8;
 $opacityIcoDisabled: 0.25;
+$opacityItemDisabled: 0.45;
 
 // todo move to global file
 @function safe-rgba($color, $alpha: 1.0) {
@@ -49,6 +50,26 @@ $opacityIcoDisabled: 0.25;
   border: 1px solid safe-rgba($colorBorderOdd, 0.21);
   margin-top: $margin;
   border-radius: $borderRadius;
+  &--status-enabled {
+    opacity: $opacityItemDisabled;
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+  &--status { 
+    span { font-size: 20px; }
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: none; 
+  }
+  &--status-accepted {
+    display: block;
+    color: $colorIcoGreen;
+  }
+  &--status-refused {
+    display: block;
+    color: $colorIcoRed;
+  }
 }
 
 .like-box { text-align: center; border: 1px solid $colorBorderOdd; border-radius: $borderRadius;

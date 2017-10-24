@@ -1,5 +1,17 @@
-<div class="vote__item">
+<div class="vote__item" [ngClass]="{'vote__item--status-enabled': isItemStatusEnabled}">
   <div class="row">
+    <div class="col-md-12 vote__item--status" [ngClass]="{ 'vote__item--status-refused': isItemStatusRefused}">
+      <span>
+          <i class="fa fa-times" aria-hidden="true"></i>            
+          <span> This feature wont be implemented.</span>
+      </span>
+    </div>
+    <div class="col-md-12 vote__item--status" [ngClass]="{'vote__item--status-accepted': isItemStatusAccepted}">
+      <span>
+          <i class="fa fa-check" aria-hidden="true"></i>
+          <span> This feature will be implemented soon.</span>
+      </span>
+    </div>
     <div class="col-md-4">
       <div class="like-box">
         <h1 class="like-box__number">
