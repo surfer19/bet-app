@@ -1,10 +1,11 @@
 <div *ngFor="let group of groups;  let i = index;">
-  <h4>group {{i}}</h4>
+  <h4>group {{i+1}}</h4>
   <h4>TotalOdd: {{group.totalOdd}}</h4>
   <ul>
     <li *ngFor="let ticket of group.tips">
       <p><b>competition: </b>{{ticket.matchCompetitionName}}</p>
       <p><b>date: </b>{{ticket.matchDate}}</p>
+      <p><b>sport: </b>{{ticket.sport}}</p>
       <p><b>odd: </b>{{ticket.odd}}</p>
     </li>
   </ul>

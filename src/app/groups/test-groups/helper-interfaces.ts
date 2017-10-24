@@ -27,7 +27,7 @@ export enum EBetSport {
 
 export enum EGroupingStrategy {
   random,
-  date,
+  date,// je datum a čas zápasu.
   competition,
   sport,
   confidence

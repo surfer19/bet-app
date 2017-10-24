@@ -19,6 +19,7 @@ export class TestGroupsComponent {
   constructor(private ticketService: TicketGroupsService) {
     // assign mock data
     this.ticket = TICKET;
-    this.groups = ticketService.generateXGroups(this.ticket, 3, EGroupingStrategy.sport);
+    // this.groups = ticketService.generateXGroups(this.ticket, 3, EGroupingStrategy.sport);
+    this.groups = ticketService.generateGroupsWithSameTotalOdds(this.ticket, 15, EGroupingStrategy.random);
   }
 }

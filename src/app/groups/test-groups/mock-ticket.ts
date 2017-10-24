@@ -38,7 +38,7 @@ export const TICKET: Tip[] = [
     matchCompetitionName: "Hertha - Bayern",
     sport: EBetSport.football,
     confidence: 1,
-    odd: 10.5
+    odd: 4.6
   },
   /*
    * HOCKEY
@@ -65,14 +65,14 @@ export const TICKET: Tip[] = [
     matchCompetitionName: "SBŠ Ostrava - Nymburk",
     sport: EBetSport.basketball,
     confidence: 1,
-    odd: 7.80
+    odd: 2.5
   },
   {
     matchDate: new Date(2017,5,10),
     matchCompetitionName: "Chance U19 - USK Praha",
     sport: EBetSport.basketball,
     confidence: 1,
-    odd: 50.0
+    odd: 1.2
   },
   {
     matchDate: new Date(2017,6,10),
@@ -86,7 +86,7 @@ export const TICKET: Tip[] = [
     matchCompetitionName: "Naestved - Svendborg ",
     sport: EBetSport.basketball,
     confidence: 1,
-    odd: 1.46
+    odd: 50
   },
   {
     matchDate: new Date(2017,3,10),
