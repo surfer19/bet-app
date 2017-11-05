@@ -7,7 +7,8 @@ export interface ITicketGroupsService {
   generateGroupsWithSameTotalOdds(tips: Tip[], expectedOdd: number, strategy: EGroupingStrategy): TicketGroup[];
   // internal funcs
   recomputeTotalOddInGroups(ticketGroups: TicketGroup[], x: Number): TicketGroup[];
-  idxMinTotalOdd(smallestArr);
+  idxMinTotalOdd(smallestArr): number;
+  idxMinItemInGroup(ticketGroup :TicketGroup) :number;
   regroupBySport(ticketGroups: TicketGroup[], sport: EBetSport): TicketGroup[];
   regroupByConfidence(ticketGroups: TicketGroup[], confidence: number): TicketGroup[];
   regroupByDate(ticketGroups: TicketGroup[], date: Date): TicketGroup[];
@@ -21,7 +22,7 @@ export class TicketGroupsService implements ITicketGroupsService {
   private resultXGroups: TicketGroup[];
 
   constructor() {}
-  // TODO change totalOdds -> expectedOdds -> pozadovany kurz
+
   generateGroupsWithSameTotalOdds(tips: Tip[], expectedOdd: number, strategy: EGroupingStrategy): TicketGroup[] {
     let finalTicketGroups:TicketGroup[] = [];
 
@@ -75,7 +76,7 @@ export class TicketGroupsService implements ITicketGroupsService {
      * last group totalOdd must be higher than 70% from expectedOdd 
      */
     // if not split group items to another groups
-    if (lastGroupOdd < (0.7 * expectedOdd)){
+    /*if (lastGroupOdd < (0.7 * expectedOdd)){
       // if (0) { // just for debug purpose
       // sorted all tips low to high
       finalTicketGroups.forEach(group => {
@@ -112,18 +113,60 @@ export class TicketGroupsService implements ITicketGroupsService {
           console.log("new biggst grp", idxMaxTotalOdd);
         }
       });
-    }
+    }*/
     /*
-     * NEW IdEA rekurzivne volat funkciu co prejde kazdu grupu a vytiahne z nej 1 najmensie cislo
-     * funkcia bezi dokym nezacne plati podmienka s expectedOdd
-     * NEMOZEM TAHAT Z KAZDEJ GROUPY
+     * prechadza groupy az dokym neplati ze posledna groupa je > 70% expectedOdd
      * 
+     * pokial v groupe po vytiahnuti prvku z nej je totalOdd viac ako 70% vytiahnem prvok 
      */
+
+     /*
+     * last group totalOdd must be higher than 70% from expectedOdd 
+     */
+    let groupsWithoutLast = finalTicketGroups.slice(0, -1);
+    console.log("without last= ", groupsWithoutLast);
+    
+    
+     while (lastGroupOdd < expectedOdd*0.7) {
+        // iterate over groups except last
+        groupsWithoutLast.forEach((group, idx) => {
+          // get idx of smallest item in group
+          let idxMin =  this.idxMinItemInGroup(groupsWithoutLast[idx]);
+          //console.log("smallest in first group", idxMin);
+
+          // get smallest item
+          let smallest = group.tips[idxMin];
+          
+          console.log("smallest = ", smallest);
+          // check total odd in original group after possible move ...
+          // actual group must be higer than 70% of expected totalOdd
+          if (group.totalOdd - smallest.odd > expectedOdd * 0.70) {
+            console.log("move");
+            // we can move item from actual group to last final group
+            
+            finalTicketGroups[idx].tips.push(smallest);
+
+            // todo remove them from original array 
+            groupsWithoutLast[idx].tips.splice(idxMin ,1)
+
+            lastGroupOdd += smallest.odd;
+            this.recomputeTotalOddInGroups(groupsWithoutLast);
+          }
+        //  else {
+        //    return
+        //  }
+          // push him to last
+          
+        });
+     }
+  
+  
+    console.log("without last", groupsWithoutLast);
     console.log("final final", finalTicketGroups);
 
     let helperGroups:TicketGroup[] = [];
     //helperGroups = this.regroupBySport(finalTicketGroups, EBetSport.basketball);
-
+    
     return finalTicketGroups;
   }
   generateXGroups(tips: Tip[], x: number, strategy: EGroupingStrategy): TicketGroup[] {
@@ -170,7 +213,7 @@ export class TicketGroupsService implements ITicketGroupsService {
     return finalXGroups;
   }
   // return idx of minimal value in array from groups
-  idxMinTotalOdd(finalXGroups){
+  idxMinTotalOdd(finalXGroups):number{
     let helperArr = [];
     // create array of totalOdds
     for (let ticketGroup of finalXGroups) {
@@ -196,6 +239,19 @@ export class TicketGroupsService implements ITicketGroupsService {
     console.log("max ", index);
     return index;
   }
+  idxMinItemInGroup(ticketGroup: TicketGroup): number {
+    // []: Tip
+    // get idx smallest value odd
+    let helperArr = [];
+    // create array of totalOdds
+    for (let tip of ticketGroup.tips) {
+      helperArr.push(tip.odd);
+    }
+    let minValue = Math.min.apply(Math, helperArr);
+    var index = helperArr.indexOf(minValue);
+    return index;
+  }
+
   recomputeTotalOddInGroups(ticketGroups: TicketGroup[]): TicketGroup[]{
     for (let i=0; i<ticketGroups.length; i++) {
       // internal counter

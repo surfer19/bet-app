@@ -88,8 +88,8 @@ export class VoteItemComponent implements OnInit {
           this.isActiveDislike = true;
           this.isInactiveLike = true;
           // reset to default other classes
-          this.isActiveLike = false;
-          this.isInactiveDislike = false;
+          this.isActiveLike = false
+          this.isInactiveDislike = false
           break;
         case EUserVote.like:
           this.isActiveLike = true;

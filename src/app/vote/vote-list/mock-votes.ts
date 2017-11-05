@@ -30,7 +30,7 @@ export const VOTES: VoteItem[] = [
   {
     title: "Lorem ipsum dolor sit amet, consectetur.",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget aliquam dui, quis suscipit ipsum. Fusce ultricies nec nulla et egestas. ",
-    points: -6,
+    points: 80,
     voted: EUserVote.dislike,
     status: EVoteItemStatus.accepted
   },
