@@ -7,6 +7,7 @@ import { VoteListComponent } from "./vote/vote-list/vote-list.component";
 import { VoteItemComponent } from "./vote/vote-item/vote-item.component";
 import { TestGroupsComponent } from './groups/test-groups/test-groups.component';
 
+
 const appRoutes: Routes = [
   {
     path: 'stats-articles',

@@ -1,3 +1,37 @@
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms ;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+/*
+ * Apply a CSS3 transition-duration
+ * @include transitionDuration(1s);
+ */
+@mixin transitionDuration($duration) {
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+  -ms-transition-duration: $duration;
+  transition-duration: $duration;
+}
+
+@mixin transitionProperty($property) {
+  -webkit-transition-property: $property;
+  -moz-transition-property: $property;
+  -o-transition-property: $property;
+  -ms-transition-property: $property;
+  transition-property: $property;
+}
+////////////
 @import "../../../variables";
 
 $colorIcoGreen: #56B657;
@@ -37,6 +71,7 @@ $opacityItemDisabled: 0.45;
   -ms-transition-duration: $duration;
   transition-duration: $duration;
 }
+
 @mixin transitionProperty($property) {
   -webkit-transition-property: $property;
   -moz-transition-property: $property;

@@ -23,23 +23,22 @@ export class VoteItemComponent implements OnInit {
     // for both states
     if (this.voteItem.status != EVoteItemStatus.active){
       this.isActiveDislike = true;
-      this.isActiveLike = true; 
+      this.isActiveLike = true;
     }
     if (this.voteItem.status == EVoteItemStatus.accepted) {
       this.isItemStatusAccepted = true
     } else if (this.voteItem.status == EVoteItemStatus.refused) {
       this.isItemStatusRefused = true;
-    } 
+    }
     this.setClasses(this.voteItem);
-    
   }
 
   pressLike(): void {
     let status = this.voteItem.status;
-    // dont do nothing on user interaction 
+    // dont do nothing on user interaction
     if (status != EVoteItemStatus.active)
         return;
-    
+
     switch (this.voteItem.voted) {
       // not voted
       case EUserVote.noValue:
@@ -49,7 +48,7 @@ export class VoteItemComponent implements OnInit {
         this.voteItem.points += 2;
         break;
       case EUserVote.like:
-        return;  
+        return;
       default:
         console.warn("something is wrong in pressLike()");
     }
@@ -59,7 +58,7 @@ export class VoteItemComponent implements OnInit {
 
   pressDislike(): void {
     let status = this.voteItem.status;
-    // dont do nothing on user interaction 
+    // dont do nothing on user interaction
     if (status != EVoteItemStatus.active)
         return;
     switch (this.voteItem.voted) {
@@ -88,8 +87,8 @@ export class VoteItemComponent implements OnInit {
           this.isActiveDislike = true;
           this.isInactiveLike = true;
           // reset to default other classes
-          this.isActiveLike = false
-          this.isInactiveDislike = false
+          this.isActiveLike = false;
+          this.isInactiveDislike = false;
           break;
         case EUserVote.like:
           this.isActiveLike = true;
